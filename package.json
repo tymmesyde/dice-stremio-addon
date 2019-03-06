@@ -1,7 +1,7 @@
 {
 	"name": "dice-stremio-addon",
-	"version": "0.0.1",
-	"description": "Roll a dice and get a random movie or series from the Stremio catalog.",
+	"version": "0.0.2",
+	"description": "Roll a dice and get random movies or series from the Stremio catalog.",
 	"scripts": {
 		"start": "node server.js"
 	},

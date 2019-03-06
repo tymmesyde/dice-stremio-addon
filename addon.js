@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { DOMAIN, CINEMETA } = process.env;
+const { ENV, DOMAIN, CINEMETA } = process.env;
 const manifest = require("./manifest.json");
 const request = require('request');
 const randomWords = require('random-words');
@@ -9,7 +9,7 @@ const addon = new addonBuilder(manifest);
 const catalog = manifest.catalogs[0];
 
 addon.defineCatalogHandler(async ({ type, id, extra }) => {
-	console.log("CATALOG:", id, type, extra);
+	if (ENV === 'dev') console.log("CATALOG:", id, type, extra);
 	const { genre } = extra;
 
 	let metas = [];
