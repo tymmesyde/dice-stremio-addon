@@ -1,0 +1,14 @@
+{
+	"name": "dice-stremio-addon",
+	"version": "0.0.1",
+	"description": "Roll a dice and get a random movie or series from the Stremio catalog.",
+	"scripts": {
+		"start": "node server.js"
+	},
+	"dependencies": {
+		"dotenv": "^6.2.0",
+		"random-words": "^1.1.0",
+		"request": "^2.88.0",
+		"stremio-addon-sdk": "git+https://github.com/tymmesyde/stremio-addon-sdk.git"
+	}
+}
