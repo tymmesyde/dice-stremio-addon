@@ -1,7 +1,7 @@
 const tape = require('tape')
 const client = require('stremio-addon-client')
 const { serveHTTP } = require("stremio-addon-sdk")
-const addonInterface = require('../addon')
+const addonInterface = require('../src/addon')
 
 const PORT = 4651
 

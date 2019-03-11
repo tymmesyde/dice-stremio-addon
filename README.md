@@ -6,7 +6,7 @@ Built with [stremio-addon-sdk](https://github.com/Stremio/stremio-addon-sdk)
 ## Install
 
 - Install node packages: `npm install`
-- Create an .env file at the root, add and update this variables:
+- Create an .env file at the root, add and update these variables:
   
 ```
 ENV="dev"

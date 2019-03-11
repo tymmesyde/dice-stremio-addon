@@ -1,14 +1,14 @@
 require('dotenv').config();
 const { ENV, DOMAIN, CINEMETA } = process.env;
-const manifest = require("./manifest.json");
+const manifest = require("./manifest");
 const request = require('request');
 const randomWords = require('random-words');
 const { addonBuilder } = require("stremio-addon-sdk");
 
-const addon = new addonBuilder(manifest);
+const builder = new addonBuilder(manifest);
 const catalog = manifest.catalogs[0];
 
-addon.defineCatalogHandler(async ({ type, id, extra }) => {
+builder.defineCatalogHandler(async ({ type, id, extra }) => {
 	if (ENV === 'dev') console.log("CATALOG:", id, type, extra);
 	const { genre } = extra;
 
@@ -30,16 +30,10 @@ addon.defineCatalogHandler(async ({ type, id, extra }) => {
 })
 
 async function getRandomItem(type, nb = 1) {
-	if(nb != 1) {
-		return Promise.all(randomWords(nb).map(async word => {
-			const search = await searchByName(type, word);
-			return search[randInt(0, search.length)];
-		}));
-	}else {
-		const search = await searchByName(type, randomWords());
-		if (!search) return await getRandomItem(type);
-		return [search[randInt(0, search.length)]];
-	}
+	return Promise.all(randomWords(nb).map(async word => {
+		const search = await searchByName(type, word);
+		return search[randInt(0, search.length)];
+	}));
 }
 
 function searchByName(type, name) {
@@ -65,4 +59,4 @@ function randInt(f, t) {
 	return Math.floor(Math.random() * t + f);
 }
 
-module.exports = addon.getInterface();
+module.exports = builder.getInterface();

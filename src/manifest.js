@@ -1,10 +1,14 @@
-{
+require('dotenv').config()
+const { version } = require('../package.json')
+const { DOMAIN } = process.env
+
+module.exports = {
     "id": "community.diceaddon",
-    "version": "0.0.1",
+    "version": version,
     "name": "Dice",
     "description": "Roll a dice and get random movies or series from the Stremio catalog.",
-    "logo": "https://stremio-dice.ga/static/dice.png",
-    "background": "https://stremio-dice.ga/static/background.png",
+    "logo": `${DOMAIN}/static/dice.png`,
+    "background": `${DOMAIN}/static/background.png`,
     "contactEmail": "tymmesyde@gmail.com",
     "resources": [
         "catalog"
